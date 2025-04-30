@@ -1,5 +1,7 @@
-import type { Metadata } from "next";
 import "./globals.css";
+import type { Metadata } from "next";
+import Header from "@/components/Header";
+
 
 export const metadata: Metadata = {
   title: "Online Shop",
@@ -13,7 +15,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased bg-white text-black">
+      <body className="antialiased bg-background">
+      <Header />
         {children}
       </body>
     </html>
