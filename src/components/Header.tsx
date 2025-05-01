@@ -10,8 +10,8 @@ const Header = () => {
         </p>
       </div>
 
-      <div className="sticky top-0 z-50 bg-white">
-        <div className="flex justify-center pt-2">
+      <div className="sticky top-0 z-50 mb-2">
+        <div className="flex justify-center pt-3.5">
           <Link href="/">
             <Image
               src="/images/everlyst.png"
