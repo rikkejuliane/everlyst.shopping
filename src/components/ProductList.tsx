@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { fetchAllProducts } from "@/utils/api";
 import { Product } from "@/types/products";
+import RatingCircles from "@/components/RatingCircles";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -63,29 +64,8 @@ const ProductList = () => {
             ) : (
               <p className="font-medium">${product.price.toFixed(2)}</p>
             )}
-          
-          <div className="flex items-center gap-1.5 mt-1">
-            {Array.from({ length: 5 }).map((_, i) => {
-              const filled = product.rating >= i + 1;
-              const half = product.rating >= i + 0.5 && product.rating < i + 1;
+         <RatingCircles rating={product.rating} />
 
-              return (
-                <div
-                  key={i}
-                  className={`w-[15px] h-[15px] rounded-full border ${
-                    filled
-                      ? "bg-darkbrown border-darkbrown"
-                      : half
-                      ? "bg-gradient-to-r from-darkbrown from-50% to-transparent to-50% border-darkbrown"
-                      : "border-[#5C4033] bg-transparent"
-                  }`}
-                />
-              );
-            })}
-            <span className="text-xs text-darkbrown pl-1.5">
-              {product.rating.toFixed(1)} / 5
-            </span>
-          </div>
           </Link>
           </div>
         </div>
