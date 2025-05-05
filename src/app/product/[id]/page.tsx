@@ -32,28 +32,30 @@ export default async function ProductPage({
           />
         </div>
         <div className="w-[406px]">
-          <h1 className="font-(family-name:--font-afacad) uppercase text-black text-[44px]">
+          <h1 className="font-(family-name:--font-afacad) uppercase text-black text-[44px] leading-none">
             {product.title}
           </h1>
           <p className="font-(family-name:--font-afacad) text-[25px]">
             {product.description}
           </p>
-          {product.discountedPrice < product.price ? (
-            <div className="flex items-center gap-3 font-(family-name:--font-afacad) text-[22px] py-7">
-              <p className="text-red-500">
-                ${product.discountedPrice.toFixed(2)}
-              </p>
-              <p className="line-through">${product.price.toFixed(2)}</p>
-            </div>
-          ) : (
-            <p className="font-medium">${product.price.toFixed(2)}</p>
-          )}
+          <div className="flex items-center gap-3 font-(family-name:--font-afacad) text-[22px] py-5">
+            {product.discountedPrice < product.price ? (
+              <>
+                <p className="text-red-500">
+                  ${product.discountedPrice.toFixed(2)}
+                </p>
+                <p className="line-through">${product.price.toFixed(2)}</p>
+              </>
+            ) : (
+              <p className="font-medium">${product.price.toFixed(2)}</p>
+            )}
+          </div>
 
           <button className="w-[130px] h-[37px] shrink-0 border-2 border-darkbrown text-darkbrown font-afacad text-[18px] font-bold leading-none flex items-center justify-center">
             ADD TO CART
           </button>
 
-          <div className="bg-darkbeige flex w-[406px] h-[143px] my-12.5">
+          <div className="bg-darkbeige flex w-[406px] h-[143px] my-10">
             <ul className="flex flex-col justify-center pl-2 text-darkbrown font-(family-name:--font-afacad) text-xl font-medium">
               <li className="flex flex-row items-center gap-3">
                 <svg
