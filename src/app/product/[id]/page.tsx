@@ -1,6 +1,7 @@
 import { fetchProductById } from "@/utils/api";
 import { Product } from "@/types/products";
 import RatingCircles from "@/components/RatingCircles";
+import ProductReviews from "@/components/ProductReviews";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -31,10 +32,14 @@ export default async function ProductPage({
           />
         </div>
         <div className="w-[406px]">
-          <h1 className="font-(family-name:--font-afacad) uppercase text-black text-[44px]">{product.title}</h1>
-          <p className="font-(family-name:--font-afacad) text-[25px]">{product.description}</p>
+          <h1 className="font-(family-name:--font-afacad) uppercase text-black text-[44px]">
+            {product.title}
+          </h1>
+          <p className="font-(family-name:--font-afacad) text-[25px]">
+            {product.description}
+          </p>
           {product.discountedPrice < product.price ? (
-            <div className="flex items-center gap-3 font-(family-name:--font-afacad) text-[22px]">
+            <div className="flex items-center gap-3 font-(family-name:--font-afacad) text-[22px] py-7">
               <p className="text-red-500">
                 ${product.discountedPrice.toFixed(2)}
               </p>
@@ -48,7 +53,7 @@ export default async function ProductPage({
             ADD TO CART
           </button>
 
-          <div className="bg-darkbeige flex w-[406px] h-[143px]">
+          <div className="bg-darkbeige flex w-[406px] h-[143px] my-12.5">
             <ul className="flex flex-col justify-center pl-2 text-darkbrown font-(family-name:--font-afacad) text-xl font-medium">
               <li className="flex flex-row items-center gap-3">
                 <svg
@@ -110,12 +115,17 @@ export default async function ProductPage({
           </div>
 
           <div>
-          <div>
-          <h2>COSTUMER REVIEWS</h2>
-          <RatingCircles rating={product.rating} />
+            <div className="flex flex-row justify-between">
+              <h2 className="font-(family-name:--font-afacad) font-medium text-[22px]">
+                COSTUMER REVIEWS
+              </h2>
+              <RatingCircles rating={product.rating} />
+            </div>
 
+            <div>
+              <ProductReviews reviews={product.reviews} />
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </main>
