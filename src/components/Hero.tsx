@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <section className="w-full h-[500px] flex justify-center items-center bg-[linear-gradient(270deg,_#FAF5EF_21.63%,_#F5ECE0_44.23%,_#F0E3D1_100%)]">
+    <section className="w-full h-[500px] flex justify-center items-center bg-[linear-gradient(270deg,_#FAF5EF_21.63%,_#F5ECE0_44.23%,_#F0E3D1_100%)] mb-20">
      <div className="flex flex-row items-center justify-center gap-[350px]">
       <div className="flex flex-col">
         <h2 className="text-darkbrown font-(family-name:--font-afacad) text-[25px] font-normal">NEW RELEASE</h2>
