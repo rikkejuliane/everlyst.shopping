@@ -7,12 +7,20 @@ import RatingCircles from "@/components/RatingCircles";
 import Image from "next/image";
 import Link from "next/link";
 
+interface ProductListProps {
+  products?: Product[];
+}
 
-const ProductList = () => {
+const ProductList = ({ products: passedProducts }: ProductListProps) => {
   const [products, setProducts] = useState<Product[] | null>(null);
   const [error, setError] = useState("");
 
   useEffect(() => {
+    if (passedProducts && passedProducts.length > 0) {
+      setProducts(passedProducts);
+      return;
+    }
+
     const getProducts = async () => {
       try {
         const data = await fetchAllProducts();
@@ -31,7 +39,7 @@ const ProductList = () => {
     };
 
     getProducts();
-  }, []);
+  }, [passedProducts]);
 
   if (error) return <p>{error}</p>;
   if (!products) return <p>Loading...</p>;
@@ -50,23 +58,24 @@ const ProductList = () => {
             />
           )}
           <div>
-          <Link href={`/product/${product.id}`} className="block hover:opacity-90">
-            <h3 className="font-(family-name:--font-afacad) text-black text-[22px] uppercase line-clamp-1">
-              {product.title}
-            </h3>
-            {product.discountedPrice < product.price ? (
-              <div className="flex items-center gap-3 font-(family-name:--font-afacad) text-xl">
-                <p className="text-red-500">
-                  ${product.discountedPrice.toFixed(2)}
-                </p>
-                <p className="line-through">${product.price.toFixed(2)}</p>
-              </div>
-            ) : (
-              <p className="font-medium">${product.price.toFixed(2)}</p>
-            )}
-         <RatingCircles rating={product.rating} />
-
-          </Link>
+            <Link
+              href={`/product/${product.id}`}
+              className="block hover:opacity-90">
+              <h3 className="font-(family-name:--font-afacad) text-black text-[22px] uppercase line-clamp-1">
+                {product.title}
+              </h3>
+              {product.discountedPrice < product.price ? (
+                <div className="flex items-center gap-3 font-(family-name:--font-afacad) text-xl">
+                  <p className="text-red-500">
+                    ${product.discountedPrice.toFixed(2)}
+                  </p>
+                  <p className="line-through">${product.price.toFixed(2)}</p>
+                </div>
+              ) : (
+                <p className="font-medium">${product.price.toFixed(2)}</p>
+              )}
+              <RatingCircles rating={product.rating} />
+            </Link>
           </div>
         </div>
       ))}
