@@ -69,3 +69,8 @@
   --color-darkbrown: #483418;
   --color-darkbeige: #f0e3d1;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+

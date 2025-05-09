@@ -47,7 +47,7 @@ const ProductList = ({ products: passedProducts }: ProductListProps) => {
   return (
     <section className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-auto">
       {products.map((product) => (
-        <div key={product.id} className="w-[344px] h-[535px] flex flex-col">
+        <div key={product.id} id={product.id === "9be4812e-16b2-44e6-bc55-b3aef9db2b82" ? "featured-product" : undefined} className="w-[344px] h-[535px] flex flex-col">
           {product.imageUrl && (
             <Image
               src={product.imageUrl}
