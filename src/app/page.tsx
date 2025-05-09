@@ -41,7 +41,7 @@ export default function Home() {
   });
 
   return (
-    <main className="flex flex-col items-center justify-center bg-background">
+    <main className="flex flex-col items-center justify-center bg-background min-h-screen">
       <Hero />
       <div className="flex flex-row justify-between mb-2 w-3/4">
         <SearchBar value={searchQuery} onChange={setSearchQuery} />

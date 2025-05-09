@@ -31,9 +31,6 @@ const Header = () => {
                 <li>
                   <Link href="/contact">CONTACT</Link>
                 </li>
-                <li>
-                  <Link href="/about">ABOUT</Link>
-                </li>
               </ul>
             </nav>
           </div>
@@ -59,8 +56,6 @@ const Header = () => {
                   strokeLinecap="round"
                 />
               </svg>
-
-              {/* Badge */}
               <span className="absolute -bottom-4 -right-4 bg-darkbrown font-(family-name:--font-afacad) font-semibold text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
                 2
               </span>
