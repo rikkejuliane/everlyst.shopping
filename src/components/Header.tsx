@@ -1,7 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useCartStore } from "@/store/useCartStore"; // 👈 import Zustand cart store
 
 const Header = () => {
+  const cartCount = useCartStore((state) => state.getCartCount());
   return (
     <header className="w-full">
       <div className="bg-darkbeige flex justify-center py-1.5">
@@ -36,7 +40,7 @@ const Header = () => {
           </div>
           <div>
             <div className="relative w-6 h-6">
-              {/* Inline SVG from Figma */}
+            <Link href="/cart" className="relative w-6 h-6 block cursor-pointer">
               <svg
                 width="34"
                 height="34"
@@ -57,8 +61,9 @@ const Header = () => {
                 />
               </svg>
               <span className="absolute -bottom-4 -right-4 bg-darkbrown font-(family-name:--font-afacad) font-semibold text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                2
+                {cartCount}
               </span>
+              </Link>
             </div>
           </div>
         </div>

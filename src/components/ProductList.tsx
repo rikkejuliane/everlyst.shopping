@@ -6,6 +6,9 @@ import { Product } from "@/types/products";
 import RatingCircles from "@/components/RatingCircles";
 import Image from "next/image";
 import Link from "next/link";
+import { useCartStore } from "@/store/useCartStore";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface ProductListProps {
   products?: Product[];
@@ -14,6 +17,7 @@ interface ProductListProps {
 const ProductList = ({ products: passedProducts }: ProductListProps) => {
   const [products, setProducts] = useState<Product[] | null>(null);
   const [error, setError] = useState("");
+  const addToCart = useCartStore((state) => state.addToCart);
 
   useEffect(() => {
     if (passedProducts && passedProducts.length > 0) {
@@ -24,8 +28,6 @@ const ProductList = ({ products: passedProducts }: ProductListProps) => {
     const getProducts = async () => {
       try {
         const data = await fetchAllProducts();
-        console.log("Fetched data:", data);
-
         if (Array.isArray(data)) {
           setProducts(data);
         } else {
@@ -47,16 +49,42 @@ const ProductList = ({ products: passedProducts }: ProductListProps) => {
   return (
     <section className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-auto">
       {products.map((product) => (
-        <div key={product.id} id={product.id === "9be4812e-16b2-44e6-bc55-b3aef9db2b82" ? "featured-product" : undefined} className="w-[344px] h-[535px] flex flex-col">
-          {product.imageUrl && (
-            <Image
-              src={product.imageUrl}
-              alt={product.title}
-              width={334}
-              height={440}
-              className="w-[344px] h-[440px] object-cover"
-            />
-          )}
+        <div
+          key={product.id}
+          id={
+            product.id === "9be4812e-16b2-44e6-bc55-b3aef9db2b82"
+              ? "featured-product"
+              : undefined
+          }
+          className="w-[344px] h-[535px] flex flex-col">
+          <div className="relative group w-[344px] h-[440px] cursor-pointer">
+            {product.imageUrl && (
+              <Image
+                src={product.imageUrl}
+                alt={product.title}
+                width={344}
+                height={440}
+                className="w-[344px] h-[440px] object-cover"
+              />
+            )}
+            <div className="absolute top-0 left-0 w-full h-full bg-white/25 flex items-end justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <button
+                onClick={() => {
+                  addToCart({
+                    id: product.id,
+                    title: product.title,
+                    price: product.discountedPrice ?? product.price,
+                    image: product.imageUrl ?? "",
+                    quantity: 1,
+                  });
+                  toast.success(`${product.title} added to cart!`);
+                }}
+                className="mb-4 w-[135px] h-[30px] shrink-0 bg-[#483418] text-white text-center font-(family-name:--font-afacad) text-[20px] font-bold cursor-pointer">
+                ADD TO CART
+              </button>
+            </div>
+          </div>
+
           <div>
             <Link
               href={`/product/${product.id}`}
