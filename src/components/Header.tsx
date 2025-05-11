@@ -40,6 +40,7 @@ const Header = () => {
           </div>
           <div>
             <div className="relative w-6 h-6">
+            <Link href="/cart" className="relative w-6 h-6 block cursor-pointer">
               <svg
                 width="34"
                 height="34"
@@ -62,6 +63,7 @@ const Header = () => {
               <span className="absolute -bottom-4 -right-4 bg-darkbrown font-(family-name:--font-afacad) font-semibold text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
                 {cartCount}
               </span>
+              </Link>
             </div>
           </div>
         </div>
