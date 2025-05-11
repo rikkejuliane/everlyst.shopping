@@ -1,23 +1,37 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { fetchProductById } from "@/utils/api";
 import { Product } from "@/types/products";
 import RatingCircles from "@/components/RatingCircles";
 import ProductReviews from "@/components/ProductReviews";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { useCartStore } from "@/store/useCartStore";
+import { toast } from "react-toastify";
 
-export default async function ProductPage({
+export default function ProductPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  let product: Product;
+  const [product, setProduct] = useState<Product | null>(null);
+  const addToCart = useCartStore((state) => state.addToCart);
 
-  try {
-    product = await fetchProductById(params.id);
-    console.log("Fetched product:", product);
-  } catch {
-    return notFound();
-  }
+  useEffect(() => {
+    const loadProduct = async () => {
+      try {
+        const { id } = await params;
+        const data = await fetchProductById(id);
+        setProduct(data);
+      } catch {
+        notFound();
+      }
+    };
+    loadProduct();
+  }, [params]);
+
+  if (!product) return <p>Loading...</p>;
 
   return (
     <main className="p-6">
@@ -51,7 +65,18 @@ export default async function ProductPage({
             )}
           </div>
 
-          <button className="w-[130px] h-[37px] shrink-0 border-2 border-darkbrown text-darkbrown font-afacad text-[18px] font-bold leading-none flex items-center justify-center">
+          <button
+            onClick={() => {
+              addToCart({
+                id: product.id,
+                title: product.title,
+                price: product.discountedPrice ?? product.price,
+                image: product.imageUrl ?? "",
+                quantity: 1,
+              });
+              toast.success(`${product.title} added to cart!`);
+            }}
+            className="w-[130px] h-[37px] shrink-0 border-2 border-darkbrown text-darkbrown font-afacad text-[18px] font-bold leading-none flex items-center justify-center cursor-pointer">
             ADD TO CART
           </button>
 
