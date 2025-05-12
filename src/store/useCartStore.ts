@@ -6,8 +6,8 @@ import { CartItem } from "@/types/cart";
 interface CartState {
   cartItems: CartItem[];
   addToCart: (item: CartItem) => void;
-  removeFromCart: (id: number) => void;
-  updateQuantity: (id: number, quantity: number) => void;
+  removeFromCart: (id: string) => void; // ← updated
+  updateQuantity: (id: string, quantity: number) => void; // ← updated
   clearCart: () => void;
   getCartCount: () => number;
   getCartTotal: () => number;
