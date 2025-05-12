@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { fetchProductById } from "@/utils/api";
 import { Product } from "@/types/products";
 import RatingCircles from "@/components/RatingCircles";
@@ -20,6 +21,8 @@ export default function ProductPage({
   const addToCart = useCartStore((state) => state.addToCart);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" }); // 👈 scroll to top
+  
     const loadProduct = async () => {
       try {
         const { id } = await params;
@@ -29,8 +32,10 @@ export default function ProductPage({
         notFound();
       }
     };
+  
     loadProduct();
   }, [params]);
+  
 
   if (!product) return <p>Loading...</p>;
 
