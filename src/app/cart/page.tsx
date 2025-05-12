@@ -1,10 +1,12 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useCartStore } from "@/store/useCartStore";
 import Image from "next/image";
 import Link from "next/link";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { useRouter } from "next/navigation";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CartPage() {
   const cartItems = useCartStore((state) => state.cartItems);
@@ -12,6 +14,10 @@ export default function CartPage() {
   const updateQuantity = useCartStore((state) => state.updateQuantity);
   const total = useCartStore((state) => state.getCartTotal());
   const router = useRouter();
+
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
 
   return (
     <main className="p-6 max-w-4xl mx-auto">
@@ -88,6 +94,7 @@ export default function CartPage() {
           </div>
         </div>
       )}
+      <ToastContainer position="bottom-right" autoClose={3000} />
     </main>
   );
 }

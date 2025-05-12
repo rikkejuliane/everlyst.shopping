@@ -8,7 +8,8 @@ import ProductReviews from "@/components/ProductReviews";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { useCartStore } from "@/store/useCartStore";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ProductPage({
   params,
@@ -155,6 +156,7 @@ export default function ProductPage({
           </div>
         </div>
       </div>
+      <ToastContainer position="bottom-right" autoClose={3000} />
     </main>
   );
 }

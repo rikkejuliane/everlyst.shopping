@@ -1,30 +1,40 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/store/useCartStore";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CheckoutSuccess() {
+  const [mounted, setMounted] = useState(false);
   const cartItems = useCartStore((state) => state.cartItems);
   const clearCart = useCartStore((state) => state.clearCart);
   const total = useCartStore((state) => state.getCartTotal());
   const router = useRouter();
 
   useEffect(() => {
+    setMounted(true); // ✅ Mount flag to avoid hydration mismatch
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
     const toastId = toast.info("Cart will be cleared in 120s", {
       toastId: "countdown",
       autoClose: false,
     });
+
     let countdown = 120;
     const interval = setInterval(() => {
       countdown--;
-      toast.update("countdown", {
+      toast.update(toastId, {
         render: `Cart will be cleared in ${countdown}s`,
       });
+
       if (countdown <= 0) {
         clearInterval(interval);
-        toast.dismiss("countdown");
+        toast.dismiss(toastId);
         clearCart();
         toast.success("Cart cleared. Redirecting home...");
         router.push("/");
@@ -32,7 +42,7 @@ export default function CheckoutSuccess() {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [clearCart, router]);
+  }, [mounted, clearCart, router]);
 
   return (
     <main className="p-6 max-w-4xl mx-auto text-center">
@@ -71,6 +81,7 @@ export default function CheckoutSuccess() {
         className="mt-8 bg-darkbrown text-white px-6 py-3 text-lg font-semibold font-(family-name:--font-afacad)">
         Continue Shopping
       </button>
+      <ToastContainer position="bottom-right" />
     </main>
   );
 }
