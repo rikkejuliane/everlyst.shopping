@@ -7,7 +7,7 @@ import RatingCircles from "@/components/RatingCircles";
 import Image from "next/image";
 import Link from "next/link";
 import { useCartStore } from "@/store/useCartStore";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 interface ProductListProps {
@@ -107,6 +107,7 @@ const ProductList = ({ products: passedProducts }: ProductListProps) => {
           </div>
         </div>
       ))}
+      <ToastContainer position="bottom-right" autoClose={3000} />
     </section>
   );
 };
