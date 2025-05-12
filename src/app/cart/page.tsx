@@ -4,12 +4,14 @@ import { useCartStore } from "@/store/useCartStore";
 import Image from "next/image";
 import Link from "next/link";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 export default function CartPage() {
   const cartItems = useCartStore((state) => state.cartItems);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
   const updateQuantity = useCartStore((state) => state.updateQuantity);
   const total = useCartStore((state) => state.getCartTotal());
+  const router = useRouter();
 
   return (
     <main className="p-6 max-w-4xl mx-auto">
@@ -78,7 +80,9 @@ export default function CartPage() {
             <p className="text-xl font-bold font-(family-name:--font-afacad)">
               Total: ${total.toFixed(2)}
             </p>
-            <button className="bg-darkbrown text-white px-6 py-2 text-lg font-semibold font-(family-name:--font-afacad)">
+            <button
+              onClick={() => router.push("/checkout-success")}
+              className="bg-darkbrown text-white px-6 py-2 text-lg font-semibold font-(family-name:--font-afacad) cursor-pointer">
               CHECKOUT
             </button>
           </div>
