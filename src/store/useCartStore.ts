@@ -1,4 +1,3 @@
-// src/store/useCartStore.ts
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { CartItem } from "@/types/cart";
@@ -6,8 +5,8 @@ import { CartItem } from "@/types/cart";
 interface CartState {
   cartItems: CartItem[];
   addToCart: (item: CartItem) => void;
-  removeFromCart: (id: string) => void; // ← updated
-  updateQuantity: (id: string, quantity: number) => void; // ← updated
+  removeFromCart: (id: string) => void; 
+  updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
   getCartCount: () => number;
   getCartTotal: () => number;
