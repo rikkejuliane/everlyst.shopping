@@ -2,13 +2,14 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ToastContainer } from "react-toastify";
-
-
 
 export const metadata: Metadata = {
-  title: "Online Shop",
-  description: "An awesome online shop built with Next.js",
+  title: "everlyst.shopping • Online Store",
+  description: "A modern, stylish shopping experience built with Next.js.",
+  keywords: ["online shop", "ecommerce", "next.js", "typescript", "everlyst"],
+  authors: [
+    { name: "Rikke Juliane", url: "https://rikkejuliane.netlify.app/" },
+  ],
 };
 
 export default function RootLayout({
@@ -19,10 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased bg-background">
-      <Header />
+        <Header />
         {children}
-        <Footer/>
-        <ToastContainer position="bottom-right" autoClose={3000} />
+        <Footer />
       </body>
     </html>
   );
