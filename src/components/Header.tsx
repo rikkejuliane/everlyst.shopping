@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCartStore } from "@/store/useCartStore"; // 👈 import Zustand cart store
+import { useCartStore } from "@/store/useCartStore";
 import { useEffect, useState } from "react";
 
 const Header = () => {

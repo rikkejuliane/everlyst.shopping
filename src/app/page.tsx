@@ -43,7 +43,7 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center bg-background min-h-screen">
       <Hero />
-      <div className="flex flex-row justify-between mb-2 w-3/4">
+      <div className="flex flex-row justify-between mb-2 max-w-[1080px] mx-auto w-full">
         <SearchBar value={searchQuery} onChange={setSearchQuery} />
         <SortDropdown value={sortOption} onChange={setSortOption} />
       </div>

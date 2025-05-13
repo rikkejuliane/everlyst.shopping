@@ -47,7 +47,7 @@ const ProductList = ({ products: passedProducts }: ProductListProps) => {
   if (!products) return <p>Loading...</p>;
 
   return (
-    <section className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-auto">
+    <section className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-[1080px] mx-auto justify-items-center px-4">
       {products.map((product) => (
         <div
           key={product.id}
@@ -67,11 +67,16 @@ const ProductList = ({ products: passedProducts }: ProductListProps) => {
                 className="w-[344px] h-[440px] object-cover"
               />
             )}
-             {product.discountedPrice < product.price && (
-    <div className="absolute top-0 right-0 bg-darkbrown text-white text-lg font-bold font-(family-name:--font-afacad) px-2 py-1 rounded-bl-xl">
-      -{Math.round(((product.price - product.discountedPrice) / product.price) * 100)}%
-    </div>
-  )}
+            {product.discountedPrice < product.price && (
+              <div className="absolute top-0 right-0 bg-darkbrown text-white text-lg font-bold font-(family-name:--font-afacad) px-2 py-1 rounded-bl-xl">
+                -
+                {Math.round(
+                  ((product.price - product.discountedPrice) / product.price) *
+                    100
+                )}
+                %
+              </div>
+            )}
 
             <div className="absolute top-0 left-0 w-full h-full bg-white/25 flex items-end justify-center opacity-0 group-hover:opacity-100 transition-opacity">
               <button
