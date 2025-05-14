@@ -20,7 +20,7 @@ const Header = () => {
         </p>
       </div>
 
-      <div className="sticky top-0 z-50 mb-2">
+      <div className="mb-2">
         <div className="flex justify-center pt-3.5">
           <Link href="/">
             <Image
@@ -34,7 +34,7 @@ const Header = () => {
           </Link>
         </div>
 
-        <div className="px-[138px] flex flex-row justify-between">
+        <div className=" px-[20px] sm:px-[138px] flex flex-row justify-between">
           <div className="font-(family-name:--font-afacad) text-2xl font-medium text-darkbrown">
             <nav>
               <ul className="flex gap-8">

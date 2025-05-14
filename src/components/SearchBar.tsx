@@ -11,7 +11,7 @@ const SearchBar = ({ value, onChange }: SearchBarProps) => (
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder=""
-      className="w-full border-0 border-b-2 border-black bg-transparent focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-base placeholder:font-(family-name:--font-afacad) pl-2"
+      className="w-[100px] sm:w-full border-0 border-b-2 border-black bg-transparent focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-base placeholder:font-(family-name:--font-afacad) pl-2"
     />
   </div>
 );
