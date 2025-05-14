@@ -11,7 +11,6 @@ import { useCartStore } from "@/store/useCartStore";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 export default function ProductPage({
   params,
 }: {
@@ -40,17 +39,17 @@ export default function ProductPage({
 
   return (
     <main className="p-6">
-      <div className="flex flex-row justify-center gap-[142px]">
+      <div className="flex flex-row flex-wrap md:flex-nowrap justify-center gap-[10px] sm:gap-[50px] md:gap-[60px] lg:gap-[142px]">
         <div>
           <Image
             src={product.imageUrl!}
             alt={product.title}
             width={470}
             height={616}
-            className="w-[470px] h-[616px] object-cover"
+            className="w-full max-w-[470px] md:w-[470px] md:h-[616px] h-auto object-cover"
           />
         </div>
-        <div className="w-[406px]">
+        <div className="max-w-[406px] w-[370px]  md:w-[406px]">
           <h1 className="font-(family-name:--font-afacad) uppercase text-black text-[44px] leading-none">
             {product.title}
           </h1>
@@ -85,7 +84,7 @@ export default function ProductPage({
             ADD TO CART
           </button>
 
-          <div className="bg-darkbeige flex w-[406px] h-[143px] my-10">
+          <div className="bg-darkbeige flex max-w-[406px] h-[143px] my-10">
             <ul className="flex flex-col justify-center pl-2 text-darkbrown font-(family-name:--font-afacad) text-xl font-medium">
               <li className="flex flex-row items-center gap-3">
                 <svg
