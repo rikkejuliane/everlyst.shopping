@@ -5,7 +5,9 @@ interface SearchBarProps {
 
 const SearchBar = ({ value, onChange }: SearchBarProps) => (
   <div className="flex flex-row items-end">
-    <label className="font-(family-name:--font-afacad) text-black font-medium text-base underline underline-offset-[5px] decoration-2">Search:</label>
+    <label className="font-(family-name:--font-afacad) text-black font-medium text-base underline underline-offset-[5px] decoration-2">
+      Search:
+    </label>
     <input
       type="text"
       value={value}

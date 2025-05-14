@@ -14,7 +14,7 @@ export default function CheckoutSuccess() {
   const router = useRouter();
 
   useEffect(() => {
-    setMounted(true); // ✅ Mount flag to avoid hydration mismatch
+    setMounted(true);
   }, []);
 
   useEffect(() => {

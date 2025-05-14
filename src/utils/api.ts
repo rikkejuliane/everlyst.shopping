@@ -9,7 +9,6 @@ export async function fetchAllProducts(): Promise<Product[]> {
   }
 
   const json = await res.json();
-  console.log("API response:", json);
   return json;
 }
 
