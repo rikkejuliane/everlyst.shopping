@@ -1,5 +1,5 @@
 # everlyst.shopping - Rikkejuliane  
-<img src="https://github.com/user-attachments/assets/fde38969-5169-4ded-a8c7-e097ba549164" alt="Logo for everlyst.shopping" height="200px">
+<img src="https://github.com/user-attachments/assets/fde38969-5169-4ded-a8c7-e097ba549164" alt="Logo for everlyst.shopping" height="150px">
 
 
 ## Table of Contents 📚  
@@ -59,7 +59,7 @@ Users can browse products, add/remove items to/from their cart, sort and search 
 * Figma
 
 ## Installation ⚙️
-Click the link to access the project: 🔗 [everlyst.shopping]()
+Click the link to access the project: 🔗 [everlyst.shopping](https://everlystshopping.vercel.app/)
 
 Clone + install:
 ```bash
