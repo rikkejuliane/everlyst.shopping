@@ -44,10 +44,10 @@ export default function CartPage() {
                 alt={item.title}
                 width={200}
                 height={200}
-                className="object-cover w-[200px] h-[200px]"
+                className="w-[160px] h-[160px] sm:w-[180px] sm:h-[180px] md:w-[200px] md:h-[200px] object-cover"
               />
               <div className="flex-1">
-                <h2 className="text-3xl font-semibold font-(family-name:--font-afacad)">
+                <h2 className="text-2xl sm:text-3xl font-semibold font-(family-name:--font-afacad)">
                   {item.title}
                 </h2>
                 <p className="font-(family-name:--font-afacad) text-xl py-3">
