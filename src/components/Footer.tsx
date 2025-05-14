@@ -30,7 +30,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="flex flex-row justify-around my-16 flex-wrap">
+      <div className="flex flex-wrap justify-center gap-[90px] px-4 max-w-[1200px] mx-auto my-16">
         <div className="flex flex-col items-center">
           <h5 className="font-(family-name:--font-theseasons) text-3xl font-bold">
             everlyst.shopping
