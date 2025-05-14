@@ -46,7 +46,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="flex flex-row justify-around p-6">
+    <div className="flex flex-row flex-wrap-reverse justify-around p-6 gap-16 lg:gap-0">
       <div className="w-[370px]">
         <form onSubmit={handleSubmit} noValidate>
           <div className="flex flex-col mb-3">
