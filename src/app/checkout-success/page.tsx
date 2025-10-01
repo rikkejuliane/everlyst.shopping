@@ -18,7 +18,7 @@ export default function CheckoutSuccess() {
   }, []);
 
   useEffect(() => {
-    if (!mounted) return;
+    if (!mounted) return undefined;
 
     const toastId = toast.info("Cart will be cleared in 120s", {
       toastId: "countdown",
@@ -41,7 +41,10 @@ export default function CheckoutSuccess() {
       }
     }, 1000);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      toast.dismiss(toastId);
+    };
   }, [mounted, clearCart, router]);
 
   return (
