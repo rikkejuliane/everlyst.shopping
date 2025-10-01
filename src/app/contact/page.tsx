@@ -51,11 +51,12 @@ export default function ContactPage() {
         <form onSubmit={handleSubmit} noValidate>
           <div className="flex flex-col mb-3">
             <div className="flex flex-row items-end">
-              <label className="w-[100px] font-(family-name:--font-afacad) text-darkbrown font-bold text-lg border-b-2 border-darkbrown">
+              <label htmlFor="fullName" className="w-[100px] font-(family-name:--font-afacad) text-darkbrown font-bold text-lg border-b-2 border-darkbrown">
                 Full Name:
               </label>
               <input
                 name="fullName"
+                id="fullName"
                 type="text"
                 value={form.fullName}
                 onChange={handleChange}
@@ -69,11 +70,12 @@ export default function ContactPage() {
 
           <div className="flex flex-col mb-3">
             <div className="flex flex-row items-end">
-              <label className="w-[100px] font-(family-name:--font-afacad) text-darkbrown font-bold text-lg border-b-2 border-darkbrown">
+              <label htmlFor="subject" className="w-[100px] font-(family-name:--font-afacad) text-darkbrown font-bold text-lg border-b-2 border-darkbrown">
                 Subject:
               </label>
               <input
                 name="subject"
+                id="subject"
                 type="text"
                 value={form.subject}
                 onChange={handleChange}
@@ -87,11 +89,12 @@ export default function ContactPage() {
 
           <div className="flex flex-col mb-3">
             <div className="flex flex-row items-end">
-              <label className="w-[100px] font-(family-name:--font-afacad) text-darkbrown font-bold text-lg border-b-2 border-darkbrown">
+              <label htmlFor="email" className="w-[100px] font-(family-name:--font-afacad) text-darkbrown font-bold text-lg border-b-2 border-darkbrown">
                 Email:
               </label>
               <input
                 name="email"
+                id="email"
                 type="email"
                 value={form.email}
                 onChange={handleChange}
@@ -105,11 +108,12 @@ export default function ContactPage() {
 
           <div className="flex flex-col mb-3">
             <div className="flex flex-row items-end">
-              <label className="w-[100px] font-(family-name:--font-afacad) text-darkbrown font-bold text-lg border-b-2 border-darkbrown">
+              <label htmlFor="message" className="w-[100px] font-(family-name:--font-afacad) text-darkbrown font-bold text-lg border-b-2 border-darkbrown">
                 Message:
               </label>
               <textarea
                 name="message"
+                id="message"
                 value={form.message}
                 onChange={handleChange}
                 rows={5}
